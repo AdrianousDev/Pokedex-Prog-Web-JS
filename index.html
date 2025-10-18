@@ -6,28 +6,97 @@
     <title>Pokedex do pae</title>
     <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body>
-    <main class="container mx-auto mb-10">
-      <div class="flex justify-center gap-12 text-red-100">
+  <body
+    class="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-gray-100 font-sans p-6"
+  >
+    <main class="container mx-auto my-10">
+      <!-- detalhes pokemon -->
+      <div
+        class="bg-gradient-to-b from-red-400 to-red-600 p-8 rounded-3xl mb-10 max-w-xl mx-auto space-y-6 text-white shadow-2xl border-4 border-red-700"
+      >
+        <!-- imagem -->
+        <div class="flex justify-center bg-gray-300/50 rounded-2xl">
+          <img
+            id="pokemonImg"
+            src=""
+            alt=""
+            class="w-40 h-40 object-contain drop-shadow-xl"
+          />
+        </div>
+
+        <!-- ID -->
+        <div class="text-center">
+          <span
+            id="pokemonId"
+            class="text-sm font-mono bg-white/20 px-3 py-1 rounded-full"
+            >#025</span
+          >
+        </div>
+
+        <!-- descrição -->
+        <div class="text-center">
+          <span
+            id="pokemonDescription"
+            class="text-lg font-semibold capitalize"
+          ></span>
+        </div>
+
+        <!-- altura e peso -->
+        <div
+          class="flex justify-between text-center bg-white/10 rounded-xl py-3 px-5"
+        >
+          <div>
+            <span class="block text-xs tracking-wider opacity-80">HEIGHT</span>
+            <span id="pokemonHeight" class="block font-bold text-lg"></span>
+          </div>
+          <div>
+            <span class="block text-xs tracking-wider opacity-80">WEIGHT</span>
+            <span id="pokemonWeight" class="block font-bold text-lg"></span>
+          </div>
+        </div>
+
+        <!-- base exp -->
+        <div
+          class="flex justify-between items-center bg-white/10 rounded-xl py-3 px-5"
+        >
+          <span class="text-xs tracking-wider opacity-80">BASE EXP</span>
+          <span id="pokemonBaseExp" class="font-bold text-lg">112</span>
+        </div>
+
+        <!-- stats -->
+        <div>
+          <span class="block mb-2 text-center font-bold tracking-wide text-sm"
+            >STATS</span
+          >
+          <div
+            id="pokemonDivStats"
+            class="flex flex-wrap justify-center gap-3 bg-white/10 p-3 rounded-xl"
+          ></div>
+        </div>
+      </div>
+
+      <!-- navegação -->
+      <div class="flex justify-center gap-12">
         <button
           id="previousButton"
-          class="bg-red-700 py-4 px-8 text-xl rounded-2xl cursor-pointer"
+          class="bg-red-600 py-4 px-8 text-xl rounded-2xl font-semibold text-white shadow-[0_0_20px_rgba(239,68,68,0.6)] hover:shadow-[0_0_30px_rgba(239,68,68,0.8)] transition-all duration-300"
         >
           Previous
         </button>
 
         <button
           id="nextButton"
-          class="bg-red-700 py-4 px-11 text-xl rounded-2xl cursor-pointer"
+          class="bg-red-600 py-4 px-11 text-xl rounded-2xl font-semibold text-white shadow-[0_0_20px_rgba(239,68,68,0.6)] hover:shadow-[0_0_30px_rgba(239,68,68,0.8)] transition-all duration-300"
         >
           Next
         </button>
       </div>
     </main>
 
+    <!-- cards pokemons -->
     <section
       id="listaPokemons"
-      class="container mx-auto grid grid-cols-10 gap-5"
+      class="container mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-10 gap-5 p-5"
     ></section>
 
     <script src="./js/script.js" type="module"></script>

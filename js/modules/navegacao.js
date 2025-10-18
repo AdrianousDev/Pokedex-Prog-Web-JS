@@ -7,6 +7,7 @@ export default function navegacao() {
 
   let offset = 0;
 
+  // next event
   nextButton.addEventListener("click", async () => {
     offset += 20;
     const dados = await chamarApi(
@@ -14,6 +15,8 @@ export default function navegacao() {
     );
     criarCard(dados);
   });
+
+  // previous event
   previousButton.addEventListener("click", async () => {
     if (offset >= 20) {
       offset -= 20;
