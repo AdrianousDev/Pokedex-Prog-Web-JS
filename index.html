@@ -6,51 +6,13 @@
     <title>Pokedex do pae</title>
     <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body class="w-full h-full">
-    <main
-      class="bg-red-500 mx-auto mt-20 grid grid-cols-[1fr_2fr] max-w-[800px] p-4"
-    >
-      <div class="p-4 text-center">
-        <img
-          id="pokemonImage"
-          src=""
-          alt=""
-          class="w-52 h-52 object-contain mx-auto"
-        />
-        <div id="pokemonId"></div>
-        <div id="pokemonName"></div>
-        <div id="pokemonTypes" class="flex justify-between"></div>
-        <div class="flex justify-between">
-          <div>
-            <div>Height</div>
-            <div id="pokemonHeight"></div>
-          </div>
-          <div>
-            <div>Weight</div>
-            <div id="pokemonWeight"></div>
-          </div>
-        </div>
-      </div>
-      <div class="bg-gray-500 p-4 flex flex-col gap-5 justify-end">
-        <div id="pokemonDescription"></div>
-        <div class="flex justify-between">
-          <div>Base Exp</div>
-          <div id="pokemonBaseExp"></div>
-        </div>
-        <div id="pokemonStats"></div>
-        <div id="pokemonEvolution"></div>
-        <div class="flex justify-between">
-          <button id="previousButton" class="py-2 px-5 bg-gray-400 rounded-xl">
-            Previous
-          </button>
-          <button id="nextButton" class="py-2 px-5 bg-gray-400 rounded-xl">
-            Next
-          </button>
-        </div>
-      </div>
-    </main>
+  <body class="w-full">
+    <main></main>
 
-    <!-- <section data-carrosel></section> -->
+    <section
+      id="listaPokemons"
+      class="container mx-auto grid grid-cols-5 gap-5"
+    ></section>
 
     <script src="./js/script.js" type="module"></script>
   </body>
