@@ -6,12 +6,28 @@
     <title>Pokedex do pae</title>
     <link rel="stylesheet" href="./css/output.css" />
   </head>
-  <body class="w-full">
-    <main></main>
+  <body>
+    <main class="container mx-auto mb-10">
+      <div class="flex justify-center gap-12 text-red-100">
+        <button
+          id="previousButton"
+          class="bg-red-700 py-4 px-8 text-xl rounded-2xl cursor-pointer"
+        >
+          Previous
+        </button>
+
+        <button
+          id="nextButton"
+          class="bg-red-700 py-4 px-11 text-xl rounded-2xl cursor-pointer"
+        >
+          Next
+        </button>
+      </div>
+    </main>
 
     <section
       id="listaPokemons"
-      class="container mx-auto grid grid-cols-5 gap-5"
+      class="container mx-auto grid grid-cols-10 gap-5"
     ></section>
 
     <script src="./js/script.js" type="module"></script>
