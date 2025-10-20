@@ -2,8 +2,16 @@ import chamarApi from "./chamarApi.js";
 import criarCard from "./criarCard.js";
 
 export default function navegacao() {
+  eventBottomNavigation();
+}
+
+function eventBottomNavigation() {
   const nextButton = document.querySelector("#nextButton");
   const previousButton = document.querySelector("#previousButton");
+
+  if (!previousButton || !nextButton) {
+    return;
+  }
 
   let offset = 0;
 

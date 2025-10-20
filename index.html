@@ -12,8 +12,34 @@
     <main class="container mx-auto my-10">
       <!-- detalhes pokemon -->
       <div
-        class="bg-gradient-to-b from-red-400 to-red-600 p-8 rounded-3xl mb-10 max-w-xl mx-auto space-y-6 text-white shadow-2xl border-4 border-red-700"
+        class="relative bg-gradient-to-b from-red-400 to-red-600 p-8 rounded-3xl mb-10 max-w-xl mx-auto space-y-6 text-white shadow-2xl border-4 border-red-700"
       >
+        <!-- previous pokemon -->
+        <div
+          id="divPreviousLateral"
+          class="absolute top-0 -left-50 w-40 h-40 bg-gray-400/50 rounded-2xl text-center"
+        >
+          <img id="previousImg" src="" class="mx-auto drop-shadow-xl" />
+          <h3
+            id="previousName"
+            class="capitalize font-bold mt-2 text-lg tracking-wide"
+          ></h3>
+          <span id="previousId" class="text-sm opacity-80"></span>
+        </div>
+
+        <!-- next pokemon -->
+        <div
+          id="divNextLateral"
+          class="absolute top-0 -right-50 w-40 h-40 bg-gray-400/50 rounded-2xl text-center"
+        >
+          <img id="nextImg" src="" class="mx-auto drop-shadow-xl" />
+          <h3
+            id="nextName"
+            class="capitalize font-bold mt-2 text-lg tracking-wide"
+          ></h3>
+          <span id="nextId" class="text-sm opacity-80"></span>
+        </div>
+
         <!-- imagem -->
         <div class="flex justify-center bg-gray-300/50 rounded-2xl">
           <img
@@ -75,6 +101,17 @@
           >
           <div
             id="pokemonDivStats"
+            class="flex flex-wrap justify-center gap-3 bg-white/10 p-3 rounded-xl"
+          ></div>
+        </div>
+
+        <!-- types -->
+        <div>
+          <span class="block mb-2 text-center font-bold tracking-wide text-sm"
+            >TYPES</span
+          >
+          <div
+            id="pokemonDivTypes"
             class="flex flex-wrap justify-center gap-3 bg-white/10 p-3 rounded-xl"
           ></div>
         </div>
