@@ -9,6 +9,8 @@ export default async function cardPrincipal(id) {
 
   updatePokemonId(pokemonDados);
 
+  updatePokemonName(pokemonDados);
+
   updatePokemonDescription(id);
 
   updatePokemonDimensions(pokemonDados);
@@ -39,6 +41,20 @@ function updatePokemonId(pokemonDados) {
   const idFormatado = pokemonDados.id.toString().padStart(4, "0");
 
   pokemonId.textContent = `#${idFormatado}`;
+}
+
+function updatePokemonName(pokemonDados) {
+  const pokemonName = document.querySelector("#pokemonName");
+
+  if (!pokemonName) {
+    return;
+  }
+
+  if (!pokemonDados) {
+    return;
+  }
+
+  pokemonName.textContent = pokemonDados.name;
 }
 
 async function updatePokemonDescription(id) {
