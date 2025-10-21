@@ -71,7 +71,6 @@ function eventLateralNavigation() {
   // next pokemon event
   divNextLateral.addEventListener("click", () => {
     const idNext = divNextLateral.dataset.id;
-    console.log(idNext);
 
     cardPrincipal(idNext);
   });

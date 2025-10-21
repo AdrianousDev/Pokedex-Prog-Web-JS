@@ -24,6 +24,8 @@ export default async function cardPrincipal(id) {
   updatePreviousPokemon(id);
 
   updateNextPokemon(id);
+
+  updatePokemonEvolution(pokemonDados);
 }
 
 function updatePokemonImage(pokemonDados) {
@@ -254,4 +256,69 @@ async function updateNextPokemon(id) {
 
   const idFormatado = idNext.toString().padStart(4, "0");
   nextId.textContent = `#${idFormatado}`;
+}
+
+async function updatePokemonEvolution(pokemonDados) {
+  const container = document.querySelector("#pokemonEvolutions");
+  if (!container) return;
+
+  // limpa a div antes de preencher
+  container.innerHTML = "";
+
+  // busca species e evolution chain
+  const speciesData = await chamarApi(pokemonDados.species.url);
+  if (!speciesData?.evolution_chain) return;
+
+  const evolutionData = await chamarApi(speciesData.evolution_chain.url);
+
+  // função recursiva para pegar todas as evoluções em ordem
+  function extrairEvolucoes(chain, resultado = []) {
+    const especie = chain.species.name;
+    const detalhes = chain.evolution_details[0];
+
+    let condicao = null;
+
+    if (detalhes) {
+      if (detalhes.min_level) condicao = `Lvl ${detalhes.min_level}`;
+      else if (detalhes.item) condicao = detalhes.item.name;
+      else if (detalhes.trigger)
+        condicao = detalhes.trigger.name.replace("-", " ");
+    }
+
+    resultado.push({ nome: especie, condicao });
+
+    if (chain.evolves_to.length > 0) {
+      extrairEvolucoes(chain.evolves_to[0], resultado);
+    }
+
+    return resultado;
+  }
+
+  const evolucoes = extrairEvolucoes(evolutionData.chain);
+
+  // para cada evolução, cria imagem + texto
+  for (let i = 0; i < evolucoes.length; i++) {
+    const evo = evolucoes[i];
+
+    // busca dados do Pokémon para obter o ID e sprite oficial
+    const dadosPokemon = await chamarApi(
+      `https://pokeapi.co/api/v2/pokemon/${evo.nome}`
+    );
+
+    // imagem do pokémon (oficial artwork com fallback)
+    const img = document.createElement("img");
+    img.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${dadosPokemon.id}.png`;
+    img.alt = evo.nome;
+    img.className = "w-16 h-16 drop-shadow-lg";
+
+    container.appendChild(img);
+
+    // se não for o último, mostra o motivo da evolução
+    if (i < evolucoes.length - 1) {
+      const motivo = document.createElement("span");
+      motivo.textContent = evolucoes[i + 1].condicao || "→";
+      motivo.className = "text-sm font-semibold text-white/80 px-2";
+      container.appendChild(motivo);
+    }
+  }
 }
