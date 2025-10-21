@@ -188,11 +188,12 @@ function updatePokemonTypes(pokemonDados) {
 }
 
 async function updatePreviousPokemon(id) {
+  const divPreviousLateral = document.querySelector("#divPreviousLateral");
   const previousImg = document.querySelector("#previousImg");
   const previousName = document.querySelector("#previousName");
   const previousId = document.querySelector("#previousId");
 
-  if (!previousImg || !previousName || !previousId) {
+  if (!divPreviousLateral || !previousImg || !previousName || !previousId) {
     return;
   }
 
@@ -212,20 +213,25 @@ async function updatePreviousPokemon(id) {
     return;
   }
 
-  previousImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+  const idPrevious = pokemon.id;
+
+  divPreviousLateral.dataset.id = idPrevious;
+
+  previousImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPrevious}.png`;
 
   previousName.textContent = pokemon.name;
 
-  const idFormatado = pokemon.id.toString().padStart(4, "0");
+  const idFormatado = idPrevious.toString().padStart(4, "0");
   previousId.textContent = `#${idFormatado}`;
 }
 
 async function updateNextPokemon(id) {
+  const divNextLateral = document.querySelector("#divNextLateral");
   const nextImg = document.querySelector("#nextImg");
   const nextName = document.querySelector("#nextName");
   const nextId = document.querySelector("#nextId");
 
-  if (!nextImg || !nextName || !nextId) {
+  if (!divNextLateral || !nextImg || !nextName || !nextId) {
     return;
   }
 
@@ -238,10 +244,14 @@ async function updateNextPokemon(id) {
     return;
   }
 
-  nextImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+  const idNext = pokemon.id;
+
+  divNextLateral.dataset.id = idNext;
+
+  nextImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idNext}.png`;
 
   nextName.textContent = pokemon.name;
 
-  const idFormatado = pokemon.id.toString().padStart(4, "0");
+  const idFormatado = idNext.toString().padStart(4, "0");
   nextId.textContent = `#${idFormatado}`;
 }
